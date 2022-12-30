@@ -24,4 +24,3 @@ if __name__ == '__main__':
     vertex_set = collatz(13)
     vertex_set_as_str = [str(x) for x in vertex_set]
     print(vertex_set_as_str)
-    collatz(13)
