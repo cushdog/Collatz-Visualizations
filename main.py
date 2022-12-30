@@ -3,7 +3,7 @@ import igraph
 from igraph import Graph
 
 print("hi")
-print("bye")
+print("lol")
 
 def collatz(num):
     list = []
