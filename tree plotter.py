@@ -19,18 +19,22 @@ def collatz_helper(num):
     else:
         return 3 * num + 1
 
-num_to_start_from = 129
+num_to_start_from = 13
 vertex_set = collatz(num_to_start_from)
 vertex_set_as_str = [str(x) for x in vertex_set]
 
 
-print(vertex_set)
+#compute the size of the nodes
+node_size = 25 * 0.05
+print(node_size)
+
+# print(vertex_set)
 index_of_start = vertex_set.index(num_to_start_from)
 g = ig.Graph(n = len(vertex_set), directed=True)
 fig, ax = plt.subplots(figsize=(5,5))
 g.add_edges([(1,0),(2,1), (0,3)])
 g.vs["label"] = vertex_set_as_str
-layout = g.layout_reingold_tilford(mode="in", root=[index_of_start])
+layout = g.layout_reingold_tilford(mode="all", root=[index_of_start])
 
-ig.plot(g, target=ax, layout=layout, vertex_size=0.6)
+ig.plot(g, target=ax, layout=layout, vertex_size=node_size, vertex_label_size=7)
 plt.show()

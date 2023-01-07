@@ -1,6 +1,29 @@
 import igraph as ig
 import matplotlib.pyplot as plt
 
+
+# #functions to return the nodes in the tree
+def collatz(num):
+    list = []
+    ## add current number to list and set num to next number in seq
+    while num > 1:
+        list.append(num)
+        num = collatz_helper(num)
+    ## loop breaks when num = 1 --> add 1 to list here
+    list.append(1)
+    return list
+
+## returns next number in sequence
+def collatz_helper(num):
+    if (num % 2 == 0):
+        return int(num / 2)
+    else:
+        return 3 * num + 1
+
+num_to_start_from = 129
+vertex_set = collatz(num_to_start_from)
+vertex_set_as_str = [str(x) for x in vertex_set]
+
 # Construct a graph with 3 vertices
 n_vertices = len(vertex_set)
 edges = [(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (3, 4)]
